@@ -45,9 +45,10 @@ export default function Home() {
     const priceDiff = Math.abs(entry - sl);
     const priceChangePercent = (priceDiff / entry) * 100;
 
-    // Calculate position size
-    // Position size = Risk amount / (Price change % * Leverage)
-    const position = riskAmount / (priceChangePercent / 100 * lev);
+    // Calculate position size (value of position, not margin)
+    // Position Size = Risk Amount / % Stop Loss
+    // This is independent of leverage
+    const position = riskAmount / (priceChangePercent / 100);
 
     setPositionSize(position);
   };
